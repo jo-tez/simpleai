@@ -61,13 +61,14 @@ class ProConsCorpus(object):
     def __iter__(self):
         i = 0
         for category, filename in list(self.input_files.items()):
-            for line in open(filename):
-                line = self._clean_line(line)
-                if self.accept_criteria(i):
-                    yield Opinion(line, category)
-                i += 1
-                if i % 1000 == 0:
-                    print("\tReaded {} examples".format(i))
+            with open(filename, encoding='latin') as f:
+                for line in f:
+                    line = self._clean_line(line)
+                    if self.accept_criteria(i):
+                        yield Opinion(line, category)
+                    i += 1
+                    if i % 1000 == 0:
+                        print("\tReaded {} examples".format(i))
 
 
 class OpinionProblem(ClassificationProblem):
@@ -96,8 +97,9 @@ def main():
     # line count
     N = 0
     for _, filename in list(input_files.items()):
-        for _ in open(filename):
-            N += 1
+        with open(filename, encoding='latin') as f:
+            for _ in f:
+                N += 1
     print("Corpus has {} examples".format(N))
 
     # Choose test set, either 10% or 10000 examples, whatever is less

@@ -21,8 +21,8 @@ and then change the input files variable to point them... it'll be faster.
 from __future__ import print_function
 
 # CHANGE INPUT FILES HERE:
-input_files = [("english", "europarl-v7.es-en.en"),
-               ("spanish", "europarl-v7.es-en.es")]
+input_files = [("english", "short.en"),
+               ("spanish", "short.es")]
 
 
 import random

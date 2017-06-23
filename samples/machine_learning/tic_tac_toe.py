@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from __future__ import print_function
+
 
 from simpleai.machine_learning.reinforcement_learning import TDQLearner, RLProblem, \
                                                              make_exponential_temperature, \
@@ -49,7 +49,7 @@ class HumanPlayer(TicTacToePlayer):
             s.append('|%d|' % i + '|'.join(list(row)) + '|')
             s.append('+-+-+-+-+')
         print(('\n'.join(s)))
-        a = input('Make your move (r, c):')
+        a = eval(input('Make your move (r, c):'))
         r, c = a
         return r * 3 + c
 
@@ -117,3 +117,4 @@ if __name__ == '__main__':
     print('Do you like to play?')
     game.run()
     print(game.state)
+
